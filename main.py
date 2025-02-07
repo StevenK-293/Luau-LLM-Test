@@ -174,13 +174,11 @@ def train_model(model, train_loader, val_loader, epochs, learning_rate, device, 
             writer.add_scalar("Loss/Validation", avg_val_loss, epoch)
             print(f"Epoch {epoch+1} Val Loss: {avg_val_loss:.4f}")
 
-        # Generate a sample output for inspection.
         sample_prompt = "function greet(name)"
         sample_output = generate_text(model, tokenizer, sample_prompt, max_length=100, temperature=0.8, device=device)
         writer.add_text("Sample Generation", f"Prompt: {sample_prompt}\nOutput: {sample_output}", epoch)
         print(f"Sample Generation at Epoch {epoch+1}:\n{sample_output}\n")
 
-        # Save a checkpoint.
         checkpoint_path = os.path.join(checkpoint_dir, f"model_epoch_{epoch+1}.pt")
         torch.save(model.state_dict(), checkpoint_path)
         print(f"Checkpoint saved to {checkpoint_path}\n")
