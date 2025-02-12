@@ -223,8 +223,7 @@ if __name__ == '__main__':
     train_dataset = CodeDataset(basic_code_texts, tokenizer, max_length=100)
     train_loader = DataLoader(train_dataset, batch_size=2, shuffle=True)
     
-    # If you have validation data, create a val_loader. Otherwise, set val_loader to None.
-    val_loader = None  # or DataLoader(val_dataset, batch_size=2, shuffle=False)
+    val_loader = None
     
     # Hyperparameters for the transformer model.
     embedding_dim = 128
